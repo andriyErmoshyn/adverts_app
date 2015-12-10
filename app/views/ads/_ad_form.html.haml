@@ -1,0 +1,16 @@
+= form_for(@ad, html: { multipart: true }) do |f|
+  
+  = render 'shared/errors_messages', object: f.object
+      
+  = f.textile_editor :ad_content
+
+  %br/
+  
+  = f.label :ad_image, "Upload image"
+  = f.file_field :ad_image, accept: "image/jpg, image/jpeg, image/gif, image/png"
+
+  %br/
+
+  =f.submit yield(:button_text), class: "btn btn-primary"
+
+= textile_editor_initialize

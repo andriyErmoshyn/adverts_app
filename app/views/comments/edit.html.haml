@@ -1,0 +1,6 @@
+= form_for([@ad, @comment]) do |f|
+
+  = f.text_area :body, rows: "3", id: "comment_area"
+  %br/
+
+  = f.submit "Update comment"

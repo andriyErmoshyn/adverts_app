@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    %title= content_for?(:title) ? (yield(:title) + " | Adverts") : "Adverts"
+    %meta{ name: "description", content: "Test task for internship"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .container#content
+      .row
+
+        = render 'layouts/header'
+        - if current_member && current_member.admin?
+          .admin_message You logged in as an admin.
+                
+        - flash.each do |key, msg|
+          = content_tag(:div, msg, class: "alert alert-#{key}")
+
+        = yield
+        
+    = render 'layouts/footer'
+    

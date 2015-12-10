@@ -1,0 +1,5 @@
+.navbar-form
+  = form_tag(ads_path, method: "get", id: "search-form") do
+    %p Find ads by content, author or author address
+    = text_field_tag :search, params[:search], placeholder: "Search Ads", class: "form-control"
+    = submit_tag "Search", name: nil, class: "btn btn-default"

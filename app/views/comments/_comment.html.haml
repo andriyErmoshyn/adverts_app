@@ -1,0 +1,12 @@
+#comment
+  %h4= pluralize(@ad.comments.count, 'comment')
+  - @ad.comments.each do |comment|
+    %p{id: "comment_#{comment.id}"}      
+      = link_to comment.member.login, member_path(comment.member_id)
+      = comment.created_at.strftime("%b %d, %Y")
+      = comment.body
+      - if can? :update, comment
+        = link_to "Edit", edit_ad_comment_path(@ad, comment), id: "edit_comment_#{comment.id}"
+      - if can? :destroy,  comment
+        = link_to "Delete", ad_comment_path(@ad, comment), 
+            method: :delete, remote: true, data: { confirm: "Are you sure?" }

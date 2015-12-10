@@ -1,0 +1,28 @@
+= content_for(:title, @member.login)
+.col-xs-12
+  .col-xs-4
+
+    %h1 #{ @member.login }'s profile
+
+    %p Full name: #{ @member.full_name }
+    %p Birthday: #{ @member.birthday }
+    %p
+      Location: 
+      %span{ id: "location" }
+        #{ @member.address}, #{ @member.city }, 
+        #{ @member.state}, #{ @member.country }, #{@member.zip }
+    - if can? :update,  @member
+      %p
+        = link_to "Edit profile", edit_member_path(@member)
+      - if can? :destroy, @member
+        = link_to "Delete member", @member, method: :delete, 
+                                                      data: { confirm: "You sure?" }
+  
+  = render "google_maps"
+  
+.col-xs-12
+  - if @ads.any? 
+    %h2 All #{ @member.login}'s ads:
+    = render 'shared/ads_list'
+  - else
+    = content_tag(:h2, "No ads yet")

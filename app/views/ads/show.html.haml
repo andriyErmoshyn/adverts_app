@@ -1,0 +1,29 @@
+%div
+  - if @ad.ad_image.blank?
+    = image_tag "empty.png"
+  - else
+    = image_tag @ad.ad_image.show.url
+
+%div
+  = textile(@ad.ad_content)
+
+%div
+  Author: #{ link_to @ad.member.login, member_path(@ad.member.id) }
+
+%div
+  %p
+    - if can? :update, @ad     
+      #{link_to "Edit", edit_ad_path(@ad)}
+      |
+    - if can? :destroy, @ad  
+      #{link_to "Destroy", @ad, method: :delete, data: { confirm: "You sure?" }}
+
+%div
+  .comments{ id: "comments_#{@ad.id}"}      
+    = render 'comments/comment'
+            
+.col-xs-3
+  %h4 Add a comment
+
+  = render 'comments/comments_form'
+  

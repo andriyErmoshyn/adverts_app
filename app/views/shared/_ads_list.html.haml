@@ -1,0 +1,24 @@
+- @ads.each do |ad|
+  .col-xs-offset-2.col-xs-8#ads-style
+    .col-xs-2
+      - if ad.ad_image.blank?
+        = image_tag "empty.png"
+      - else
+        = link_to (image_tag ad.ad_image.thumb.url), ad
+      %p Author: #{ link_to ad.member.login, member_path(ad.member.id), title: "View profile" }
+      %p Posted: #{ time_ago_in_words(ad.created_at) }
+    .col-xs-6.col-xs-offset-1
+      %p
+        - if ad.ad_content.length < 160        
+          = textile(ad.ad_content)
+          %p= link_to "Read more...", ad
+        - else
+          = truncate(textile(ad.ad_content), length: 160, separator: ' ', 
+                            escape: false) { link_to "Read more...", ad }
+        
+      %p= link_to pluralize(ad.comments.count, 'comment'), ad
+      - if can? :update, ad     
+        #{ link_to "Edit", edit_ad_path(ad) }
+        |
+      - if can? :destroy, ad  
+        #{ link_to "Destroy", ad, method: :delete, data: { confirm: "You sure?" }}

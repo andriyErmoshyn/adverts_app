@@ -1,0 +1,88 @@
+
+ // * This is a manifest file that'll be compiled into application.css, which will include all the files
+ // * listed below.
+ // *
+ // * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ // * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ // *
+ // * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ // * compiled file so the styles you add here take precedence over styles defined in any styles
+ // * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ // * file per style scope.
+ // *
+ // *= require_tree .
+ // *= require_self
+ // *= require textile-editor 
+
+@import "bootstrap";
+
+/*Sticky footer CSS code*/
+html{
+  position:relative; 
+  min-height: 100%;
+}
+html,body{
+  margin:0;
+  padding:0;
+}
+#content{
+  margin-bottom:40px; // Height of footer
+} 
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height:40px;    
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 5px;
+    border-top: 2px solid $gray-lighter;
+    color: #099;
+}
+/* End of Sticky footer CSS code */
+
+#ads-style {
+  border: 5px double $gray-lighter;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+#profile_link{
+  color: #4B09D9;
+}
+
+#ad_ad_content{
+  width: 555px;
+  height: 100px;
+}
+
+.admin_message{
+  background-color: #8dfff4;
+  text-align: center;
+  border: 1px solid #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#search-form{
+  width: 100%;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+// Google map size
+#map { 
+  height: 300px; 
+}
+// automatically image resizing
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+    margin-top: 10px;
+}
+#facebook-link, #twitter-link{
+  padding-top: 0 !important;
+}

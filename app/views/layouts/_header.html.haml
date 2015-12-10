@@ -1,0 +1,29 @@
+%header{ class: "navbar navbar-default", id: 'header' }
+  .container-fluid
+    .navbar-header
+      %button{ type: "button", class: "navbar-toggle collapsed", 
+                      "data-toggle" => "collapse", "data-target" => "#bs-example-navbar-collapse-1",
+                      "aria-expanded" => "false"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar        
+      %a.navbar-brand#brand{ href: "/"}
+        Adverts
+        
+    /Collect the nav links, forms, and other content for toggling
+    %div{ class: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1" }
+      %ul{ class: "nav navbar-nav navbar-right" }
+        %li= link_to "Home", root_url
+        - if logged_in?
+          %li= link_to "Place ad", new_ad_path
+          %li= link_to "Members", members_path
+          %li= link_to "Log out", logout_path, method: :delete, data: { confirm: "You sure?" }
+          %li= link_to "#{current_member.login}'s profile", current_member, id: "profile_link"
+        - else
+          %li= link_to "Sign up!", new_member_path
+          %li= link_to "Log in", login_path
+          %li= link_to image_tag('facebook.png', size: '25x25', title: "Log in with Facebook"), 
+                                                  '/auth/facebook', id: "facebook-link"
+          %li= link_to image_tag('twitter.png', size: '25x25', title: "Log in with Twitter"), 
+                                                  '/auth/twitter', id: "twitter-link"

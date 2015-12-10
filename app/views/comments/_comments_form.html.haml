@@ -1,0 +1,6 @@
+= form_for([@ad, @ad.comments.build], remote: true) do |f|
+
+  = f.text_area :body, rows: "3", id: "comment_area"
+  %br/
+
+  = f.submit "Add a comment"

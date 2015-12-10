@@ -1,0 +1,11 @@
+= content_for(:title, "Home")
+= render 'search_form'
+
+- if @ads.present?
+  - if params[:search]
+    %h2 #{pluralize(@ads.count, "ad")} found
+  = render 'shared/ads_list'
+- else
+  - if params[:search]
+    %h2 There are no ads containing the term "#{params[:search]}"
+

@@ -46,7 +46,7 @@ The application created as a test task.
   - registration;
   - profile;
 
-  * Tests:
+* Tests:
    - Rspec, Capybara, Faker;
    - simplecov(91.32%);
    - travis ci.
